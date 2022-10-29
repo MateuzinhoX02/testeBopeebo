@@ -1,8 +1,6 @@
 // Tentando fazer isso funcionar na Psych. (do IdkLool.)
 package;
 
-import GroovinClasses.ModWeekData;
-import GroovinShaders.PlaneRaymarcher;
 import Song.SwagSong;
 import WiggleEffect.WiggleEffectType;
 import flixel.FlxCamera;
@@ -35,7 +33,6 @@ class BopeeboRumbleModInstance
 	public var kawaiSprite:FlxSprite;
 	public var me:FlxSprite;
 	public var ps:PlayState;
-	public var heyEvents:List<BRStageEvent>;
 	public var camFake:FlxCamera;
 	public var camArrows:FlxCamera;
 	public var camSus:FlxCamera;
@@ -49,7 +46,8 @@ class BopeeboRumbleModInstance
 	public var doSpin:Bool = false;
 	public var staticArrows:Array<FlxSprite> = new Array<FlxSprite>();
 	public var susWiggleEffect:WiggleEffect;
-	public var planeRaymarcher:PlaneRaymarcher;
+	public var boyfriend:Boyfriend = null;
+	//public var planeRaymarcher:PlaneRaymarcher;
 
 	public function new() {}
 }
@@ -60,25 +58,15 @@ class BopeeboRumbleMod extends Mod
 
 	var i:BopeeboRumbleModInstance;
 
-	function StageName():String
-	{
-		return PlayState.curStage;
-	}
-
-	override function ShouldRun():Bool
-	{
-		if (Type.getClass(FlxG.state) == PlayState)
-		{
-			return PlayState.curMod == this && PlayState.isModdedStage;
-		}
-		return false;
-	}
-
-	function AddEvent(callback:Function, time:Float)
+	/*function AddEvent(callback:Function, time:Float)
 	{
 		i.heyEvents.add(new BRStageEvent(callback, time * 1000));
 	}
 
+	function hey();
+	{
+		boyfriend.playAnim('hey', true);
+	}
 	function AddHey(time:Float)
 	{
 		AddEvent((state:PlayState) ->
@@ -121,7 +109,7 @@ class BopeeboRumbleMod extends Mod
 	override function GetName():String
 	{
 		return Type.getClassName(Type.getClass(this));
-	}
+	}*/
 
 	function Credits()
 	{
@@ -770,8 +758,9 @@ class BopeeboRumbleMod extends Mod
 		i.ps.add(stageCurtains);
 	}
 
-	override function AddToFreeplay(addWeek:(Array<String>, Int, Array<String>) -> Void, weekNum:Int)
+	// Não vai ser necessário por conta que ele vai rodar como script, certo? 
+	/*override function AddToFreeplay(addWeek:(Array<String>, Int, Array<String>) -> Void, weekNum:Int)
 	{
 		addWeek(["Bopeebo Rumble"], weekNum, ['dad']);
-	}
+	}*/
 }
